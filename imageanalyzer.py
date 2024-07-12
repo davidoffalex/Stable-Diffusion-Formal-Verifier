@@ -2,6 +2,7 @@ import os
 import json
 import openai
 import base64
+import requests
 from openai import OpenAI
 from PIL import Image
 
@@ -11,7 +12,7 @@ def read_api_key(api_path):
         api_key = file.read().strip()
     return api_key
 
-file_path_api = '/home/alexda/projects/openai_api_key.txt' # Path to api key
+file_path_api = '/home/alexda/projects/openai_api_key.txt' # Path to api key [USER ENTERED]
 my_api_key = read_api_key(file_path_api)
 
 client = OpenAI(api_key = my_api_key)
@@ -24,30 +25,36 @@ def generate_image_descriptions(image_directory, output_file):
     descriptions = {}
 
     for filename in os.listdir(image_directory):
-        base64_image = encode_image(filename)
-        # headers = {
-        #     "Content-Type": "application/json",
-        #     "Authorization": f"Bearer {api_key}"
-        # }
-        # Generate a description using the GPT API Prompt: "Please provide a detailed description of this image"
+        base64_image = encode_image(os.path.join(image_directory,filename))
+        headers = {
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {my_api_key}"
+        }
+        
         payload = {
             "model": "gpt-4o",
             "messages": [
                 {
                     "role": "user",
-                    "text": "Please provide a detailed description of this image"
-                },
-                {
-                    "type": "image-url",
-                    "image_url": {
-                        "url": f"data:image/png;base64,{base64_image}"
-                    }
+                    "content": [
+                        {
+                            "type": "text",
+                            "text": "Please provide a detailed description of this image."
+                        },
+                        {
+                            "type": "image_url",
+                            "image_url": {
+                               "url": f"data:image/png;base64,{base64_image}" 
+                            }
+                        }
+                    ]
                 }
             ],
             "max_tokens": 300
         }
         # Extract the description from the response
-        description = response['data'][0]['text']
+        response = requests.post("https://api.openai.com/v1/chat/completions", headers=headers, json=payload)
+        description = response.json()['choices'][0]['message']['content']
         descriptions[filename] = description
 
     # Save the descriptions to a JSON file
@@ -55,6 +62,7 @@ def generate_image_descriptions(image_directory, output_file):
         json.dump(descriptions, json_file, indent=4)
     
 # Example usage
-image_directory = 'home/alexda/projects/Stable-Diffusion-Formal-Verifier/images' # Path to the image directory
-output_file = 'home/alexda/projects/Stable-Diffusion-Formal-Verifier/outputs/descriptions.json' # Path to output file
+project_directory = os.path.dirname(os.path.abspath(__file__))
+image_directory = os.path.join(project_directory, 'images') # Path to the image directory
+output_file = os.path.join(project_directory, 'outputs', 'descriptions.json')
 generate_image_descriptions(image_directory, output_file)
