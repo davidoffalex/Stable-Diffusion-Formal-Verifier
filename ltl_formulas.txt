@@ -1,0 +1,22 @@
+Propositions: 
+f: The dolphin is floating at the surface of the water 
+a: The dolphin is above the water
+j: The dolphin is jumping out of the water
+s: The dolphin is submerged below the water
+b: The image is taken from under water
+
+Operators:
+◻: Globally
+◊: Future
+∨: Or
+∧: And
+→: If-then
+¬: Not
+
+LTLs:
+◊f
+◊(a ∧ j)
+◻¬b
+◻(¬(f ∨ s) → j)
+◻(s → ¬b)
+◻(f ∨ a ∨ s)

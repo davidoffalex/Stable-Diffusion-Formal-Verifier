@@ -58,11 +58,11 @@ def generate_image_descriptions(image_directory, output_file):
         descriptions[filename] = description
 
     # Save the descriptions to a JSON file
-    with open(output_file, 'w') as json_file:
+    with open(output_file_path, 'w') as json_file:
         json.dump(descriptions, json_file, indent=4)
     
-# Example usage
+# Execute the functions
 project_directory = os.path.dirname(os.path.abspath(__file__))
-image_directory = os.path.join(project_directory, 'images') # Path to the image directory
-output_file = os.path.join(project_directory, 'outputs', 'descriptions.json')
-generate_image_descriptions(image_directory, output_file)
+image_directory_path = os.path.join(project_directory, 'images') # Path to the image directory
+output_file_path = os.path.join(project_directory, 'outputs', 'descriptions.json')
+generate_image_descriptions(image_directory_path, output_file_path)
