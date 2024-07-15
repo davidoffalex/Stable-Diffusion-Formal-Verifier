@@ -43,10 +43,10 @@ def check_violations(ltl_formulas, image_descriptions):
                     {
                     "type": "text",
                     "text": ("Read the list of Linear Temporal Logic (LTL) formulas used to describe the specifications of an entire image dataset."
-                                "Additionally, read all image descriptions from the image dataset."
-                                "Determine which LTLs were broken, and by which images (if applicable)"
-                                "For violating images, print the LTL(s) that were not adhered to"
-                                "If an image does not violate any LTLs, do not print anything")
+                            "Read all image descriptions from the image dataset."
+                            "In the context of the whole dataset, determine which LTLs were broken, and by which images (if applicable)"
+                            "List the violated LTLs. Under each violated LTL, list which image(s) violated the LTL"
+                            "If the whole dataset did not adhere to an LTL, rather than a specific image, simply list the LTL and state 'whole dataset'")
                     },
                     {
                     "type": "text",
