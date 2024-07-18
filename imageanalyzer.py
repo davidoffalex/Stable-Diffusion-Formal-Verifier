@@ -24,7 +24,11 @@ def encode_image(image_path):
 def generate_image_descriptions(image_directory, output_file):
     descriptions = {}
 
+    counter = 0
     for filename in os.listdir(image_directory):
+        counter += 1
+        print (f"Analzying image:  {counter}")
+        
         base64_image = encode_image(os.path.join(image_directory,filename))
         headers = {
             "Content-Type": "application/json",
