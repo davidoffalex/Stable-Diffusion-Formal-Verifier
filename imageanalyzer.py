@@ -54,7 +54,7 @@ def generate_image_descriptions(image_directory, output_file):
                     ]
                 }
             ],
-            "max_tokens": 300
+            "max_tokens": 600
         }
         # Extract the description from the response
         response = requests.post("https://api.openai.com/v1/chat/completions", headers=headers, json=payload)
