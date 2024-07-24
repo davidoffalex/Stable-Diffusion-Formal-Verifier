@@ -10,12 +10,12 @@ else:
     print(f"imageanalyzer.py encountered an error: {result1.stderr}")
     exit(1)
 
-# Run determine violations script
-result2 = subprocess.run(['python3', 'determineviolations.py'], capture_output=True, text=True)
+# Run violations determiner 
+result2 = subprocess.run(['python3', 'violationsdeterminer.py'], capture_output=True, text=True)
 
-# Check if determine violations ran successfully
+# Check if violations determiner ran successfully
 if result2.returncode == 0:
-    print("determineviolations.py ran successfully.")
+    print("violationsdeterminer.py ran successfully.")
 else:
-    print(f"determinviolations.py encountered an error: {result2.stderr}")
+    print(f"violationsdeterminer.py encountered an error: {result2.stderr}")
     exit(1)
