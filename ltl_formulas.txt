@@ -4,6 +4,7 @@ a: The dolphin is above the water
 j: The dolphin is jumping out of the water
 s: The dolphin is submerged below the water
 b: The image is taken from under water
+d: The image pictures one or more dolphins.
 
 Operators:
 ◻: Globally
@@ -14,6 +15,7 @@ Operators:
 ¬: Not
 
 LTLs:
+◻d
 ◊f
 ◊(a ∧ j)
 ◻¬b
