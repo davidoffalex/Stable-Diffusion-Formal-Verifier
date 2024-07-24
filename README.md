@@ -11,4 +11,4 @@ Ensure that the following are installed using the "pip install" command in your 
 2. requests
 
 ## Other 
-You will need to replace the dirctory path to your API key for imageanalyzer.py and determineviolations.py. 
+You will need to replace the directory path to your API key for imageanalyzer.py and determineviolations.py. 
