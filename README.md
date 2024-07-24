@@ -10,5 +10,11 @@ Ensure that the following are installed using the "pip install" command in your 
 1. openai
 2. requests
 
+## Preparing the LTLs
+Following the format of the example ltl_formulas.txt, enter the following information into ltl_formulas.txt: 
+1. All propositions and their definitions.
+2. All operators used and their definitions. 
+3. The list of LTLs
+
 ## Other 
 You will need to replace the directory path to your API key for imageanalyzer.py and determineviolations.py. 
