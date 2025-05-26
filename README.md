@@ -17,4 +17,4 @@ Following the format of the example ltl_formulas.txt, enter the following inform
 3. The list of LTLs
 
 ## Other 
-You will need to replace the directory path to your API key for imageanalyzer.py and determineviolations.py. 
+You will need to replace the directory path to your API key for imageanalyzer.py and violationsdeterminer.py. 
