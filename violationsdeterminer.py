@@ -10,7 +10,7 @@ def read_api_key(api_path):
         api_key = file.read().strip()
     return api_key
 
-file_path_api = '/home/alexda/projects/openai_api_key.txt' # Path to API key [USER ENTERED]
+file_path_api = 'enter/path/here' # Path to API key [USER ENTERED]
 my_api_key = read_api_key(file_path_api)
 
 client = OpenAI(api_key = my_api_key)
